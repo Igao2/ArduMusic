@@ -1,4 +1,4 @@
-String rece;
+String receive;
  int thisnote;
 void setup() {
   Serial.begin(9600);
@@ -6,26 +6,26 @@ void setup() {
 
 void loop() {
   
-rece = Serial.read();
-String b = rece.substring(',',1);
-int le = b.length();
-int con[le];
-int melody[le];
-int duration[le];
- for(thisnote = 0;thisnote<le;thisnote++)
+receive = Serial.read();
+String split = receive.substring(',',1);
+int sized = split.length();
+int convert[sized];
+int melody[sized];
+int duration[sized];
+ for(thisnote = 0;thisnote<sized;thisnote++)
  {
    if(thisnote%2==0)
    {
-	con[thisnote]=b[thisnote].toInt();
-     melody[thisnote] = con[thisnote];
+  convert[thisnote]= split[thisnote].toInt();
+     melody[thisnote] = convert[thisnote];
    }
    else{
-	con[thisnote]=b[thisnote].toInt();
-    duration[thisnote] = con[thisnote];
+  convert[thisnote]=split[thisnote].toInt();
+    duration[thisnote] = convert[thisnote];
    }
   
  }
-  if(thisnote = le)
+  if(thisnote = sized)
   {
     for(int i = 0;i<thisnote; i++)
     {
