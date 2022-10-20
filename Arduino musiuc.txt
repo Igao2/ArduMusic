@@ -1,0 +1,35 @@
+String rece;
+ int thisnote;
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+rece = Serial.read();
+String b = rece.substring(',',1);
+int le = b.length();
+int con[le];
+int melody[le];
+int duration[le];
+ for(thisnote = 0;thisnote<le;thisnote++)
+ {
+   if(thisnote%2==0)
+   {
+	con[thisnote]=b[thisnote].toInt();
+     melody[thisnote] = con[thisnote];
+   }
+   else{
+	con[thisnote]=b[thisnote].toInt();
+    duration[thisnote] = con[thisnote];
+   }
+  
+ }
+  if(thisnote = le)
+  {
+    for(int i = 0;i<thisnote; i++)
+    {
+      tone(10,melody[i],duration[i]);
+    }
+  }
+}
