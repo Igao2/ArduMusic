@@ -5,8 +5,8 @@ void setup() {
 }
 
 void loop() {
-  
-receive = Serial.read();
+  while (Serial.available() == 0) {} 
+receive = Serial.readString();
 String split = receive.substring(',',1);
 int sized = split.length();
 int convert[sized];
@@ -16,11 +16,11 @@ int duration[sized];
  {
    if(thisnote%2==0)
    {
-  convert[thisnote]= split[thisnote].toInt();
+  convert[thisnote]= split[thisnote] - '0';
      melody[thisnote] = convert[thisnote];
    }
    else{
-  convert[thisnote]=split[thisnote].toInt();
+  convert[thisnote]=split[thisnote] - '0';
     duration[thisnote] = convert[thisnote];
    }
   
